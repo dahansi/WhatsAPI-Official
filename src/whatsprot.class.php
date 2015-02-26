@@ -3744,6 +3744,9 @@ class WhatsProt
             ), array($node, $broadcastNode), null);
 
         $this->sendNode($messageNode);
+        
+        $this->waitForServer($msgId);
+        
         //listen for response
         $this->eventManager()->fire("onSendMessage",
             array(
@@ -3752,7 +3755,7 @@ class WhatsProt
                 $msgId,
                 $node
             ));
-
+				
         return $msgId;
     }
 
